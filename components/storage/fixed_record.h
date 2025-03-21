@@ -6,7 +6,9 @@
 struct FixedRecord {
     std::array<int, 9> data;
 
-    FixedRecord();
+    FixedRecord() {
+        // TODO: do we really want to do this        
+    };
 };
 
 

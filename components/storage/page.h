@@ -3,23 +3,15 @@
 
 #include <array>
 
-#include "fix_record.h"
+#include "fixed_record.h"
 #include "variable_record.h"
 
 struct Page {
     std::array<int, 128> data;
-
-    Page() {
-        data.fill(0);
-    }
 };
 
 struct FixedPage : Page {
-    FixedPage(int recordSize) {
-        // create a page header denoting slots with records
-        data.fill(0);
-    }
-
+    FixedPage(int recordSize);
     int Insert(FixedRecord record);
     FixedRecord Find(int recordID);
     int Update(FixedRecord newRecord);
@@ -27,11 +19,7 @@ struct FixedPage : Page {
 };
 
 struct VariablePage : Page {
-    VariablePage() {
-        // create a directory, starting from the end of block
-        data.fill(0);
-    }
-
+    VariablePage();
     int Insert(VariableRecord record);
     VariableRecord Find(int recordID);
     int Update(VariableRecord newRecord);

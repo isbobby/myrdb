@@ -6,7 +6,9 @@
 struct VariableRecord {
     std::vector<int> data;
 
-    VariableRecord();
+    VariableRecord() {
+        
+    };
 };
 
 
