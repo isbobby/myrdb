@@ -3,6 +3,9 @@
 
 #include <array>
 
+#include "fix_record.h"
+#include "variable_record.h"
+
 struct Page {
     std::array<int, 128> data;
 
@@ -16,6 +19,11 @@ struct FixedPage : Page {
         // create a page header denoting slots with records
         data.fill(0);
     }
+
+    int Insert(FixedRecord record);
+    FixedRecord Find(int recordID);
+    int Update(FixedRecord newRecord);
+    int Delete(int recordID);
 };
 
 struct VariablePage : Page {
@@ -23,6 +31,11 @@ struct VariablePage : Page {
         // create a directory, starting from the end of block
         data.fill(0);
     }
+
+    int Insert(VariableRecord record);
+    VariableRecord Find(int recordID);
+    int Update(VariableRecord newRecord);
+    int Delete(int recordID);
 };
 
 #endif
