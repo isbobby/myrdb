@@ -7,10 +7,13 @@
 #include "variable_record.h"
 
 struct Page {
-    std::array<int, 128> data;
+    std::array<int, 128> Data;
 };
 
 struct FixedPage : Page {
+    int RecordNum;
+    int HeaderSize;
+
     FixedPage(int recordSize);
     int Insert(FixedRecord record);
     FixedRecord Find(int recordID);

@@ -2,7 +2,11 @@
 #include <iostream>
 
 int main() {
-    FixedPage *fixedPagePtr = new FixedPage(3); // returns a pointer to the dynamically allocated memory
+    FixedRecord fixedRecord = FixedRecord();
+
+    std::cout << "\n";
+
+    FixedPage *fixedPagePtr = new FixedPage(fixedRecord.Size()); // returns a pointer to the dynamically allocated memory
 
     delete(fixedPagePtr); // need to free mmr
     
